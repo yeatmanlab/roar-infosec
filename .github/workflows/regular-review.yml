@@ -1,0 +1,32 @@
+name: Biannual Review Reminder
+
+on:
+  schedule:
+    # Runs at midnight on January 1st and July 1st every year
+    - cron: '0 0 1 1,7 *'
+  workflow_dispatch:   # Manual trigger option
+
+jobs:
+  create-review-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+
+      - name: Get team members and create issue
+        run: |
+          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
+          ISSUE_BODY="It is time for the biannual review of the Data Privacy and Information Security Manual. Please ensure all sections are up to date and in compliance with current regulations. @yeatmanlab/roar-infosec-maintainers"
+          
+          # Create the issue and mention the team
+          ISSUE_NUMBER=$(gh issue create --title "Biannual Review of Data Privacy and Information Security Manual" --body "$ISSUE_BODY" --json number --jq '.number')
+
+          # Loop through each team member and assign them to the issue
+          for MEMBER in $TEAM_MEMBERS
+          do
+            gh issue assign $ISSUE_NUMBER --assignee $MEMBER
+          done

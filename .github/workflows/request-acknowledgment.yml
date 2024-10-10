@@ -1,0 +1,27 @@
+name: Annual Employee Acknowledgment
+
+on:
+  schedule:
+    - cron: '0 0 1 1,7 *'  # Runs at midnight on January 1st and July 1st every year
+  workflow_dispatch:   # This enables manual triggering
+
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+
+      - name: Get team members and create issues
+        run: |
+          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar/members --jq '.[].login')
+          for MEMBER in $TEAM_MEMBERS
+          do
+            ISSUE_BODY="Please acknowledge that you have reviewed the Data Privacy and Information Security Manual for the year by commenting 'Acknowledged' below."
+            gh issue create --title "Acknowledgment Request for $MEMBER" --body "$ISSUE_BODY" --assignee $MEMBER
+          done

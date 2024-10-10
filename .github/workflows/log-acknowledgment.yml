@@ -1,0 +1,42 @@
+name: Acknowledgment Auto-Close and Log
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  acknowledge:
+    runs-on: ubuntu-latest
+
+    # First, we add conditions to check if the comment contains "Acknowledged",
+    # if the comment comes from the assignee, and if the issue is an acknowledgment issue.
+    if: contains(github.event.comment.body, 'Acknowledged') && 
+        github.event.issue.assignee.login == github.event.comment.user.login &&
+        contains(github.event.issue.title, 'Acknowledgment')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get current date and username
+        id: vars
+        run: |
+          echo "DATE=$(date -u)" >> $GITHUB_ENV
+          echo "USER=${{ github.event.comment.user.login }}" >> $GITHUB_ENV
+          echo "ISSUE_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
+
+      - name: Append acknowledgment to file
+        run: |
+          echo "- **${{ env.USER }}**: Acknowledged on ${{ env.DATE }} (Issue #${{ env.ISSUE_NUMBER }})" >> acknowledgments.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add acknowledgments.md
+          git commit -m "Added acknowledgment for ${{ env.USER }} on ${{ env.DATE }}"
+          git push origin main
+
+      - name: Close the issue
+        run: |
+          gh issue close ${{ github.event.issue.number }} --comment "Thank you, ${{ env.USER }}, for acknowledging the manual."
