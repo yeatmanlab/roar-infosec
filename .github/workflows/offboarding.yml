@@ -1,0 +1,47 @@
+name: Offboarding Checklist Issue
+
+on:
+  workflow_dispatch:
+    inputs:
+      employee_name:
+        description: "The name of the departing employee"
+        required: true
+        type: string
+      employee_email:
+        description: "The email of the departing employee"
+        required: true
+        type: string
+
+jobs:
+  create-offboarding-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+
+      - name: Read offboarding checklist
+        id: offboarding_checklist
+        run: |
+          CONTENT=$(cat employee-lifecycle/offboarding-checklist.md)
+          CONTENT="**Employee Name:** ${{ github.event.inputs.employee_name }}\n**Employee Email:** ${{ github.event.inputs.employee_email }}\n\n$CONTENT"
+          echo "content<<EOF" >> $GITHUB_ENV
+          echo "$CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create GitHub issue for offboarding
+        env:
+          ISSUE_BODY: ${{ env.content }}
+        run: |
+          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
+
+          ISSUE_NUMBER=$(gh issue create --title "Employee Offboarding Checklist for ${{ github.event.inputs.employee_name }}" --body "$ISSUE_BODY" --label offboarding)
+
+          # Loop through each team member and assign them to the issue
+          for MEMBER in $TEAM_MEMBERS
+          do
+            gh issue assign $ISSUE_NUMBER --assignee $MEMBER
+          done
