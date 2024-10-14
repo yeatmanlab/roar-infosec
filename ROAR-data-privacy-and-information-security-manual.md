@@ -96,6 +96,8 @@ ROAR's Information Security Policy ensures that all sensitive data, including st
 
 ## Access Control Policy
 
+### Role-Based Access Control (RBAC)
+
 To protect sensitive data, access to ROAR systems is controlled based on user roles and responsibilities. The ROAR team defines the following roles:
 
 - **Super Administrators**: Full access to all data and systems. This is restricted to ROAR employees with a need for full access.
@@ -106,7 +108,13 @@ To protect sensitive data, access to ROAR systems is controlled based on user ro
 - **Caregivers**: Access to only their students' data for the purpose of viewing assessment scores.
 - **Participants**: Access to only their own data for the purpose of completing assessments.
   
+### Multi-Factor Authentication (MFA)
+
 In accodance with minsec, all ROAR employees must use **Stanford Duo Mobile** for multi-factor authentication when accessing privileged accounts.
+
+### Onboarding and Offboarding
+
+User accounts are created for new employees based on their roles. Access is removed immediately upon termination of employment or change in role.
 
 ---
 
@@ -134,7 +142,39 @@ Data at rest is stored in multiple possible locations. Below, we describe each l
 
 ## Incident Response Plan
 
-In the event of a data breach or security incident, ROAR follows a detailed incident response process to contain the breach, mitigate damage, and notify affected parties.
+In the event of a data breach or security incident, ROAR follows a detailed incident response process to contain the breach, mitigate damage, and notify affected parties. As ROAR relies on Google Cloud Platform (GCP) and Firebase for its infrastructure, the breach response procedures are aligned with Google's established protocols for handling security incidents. Additionally, ROAR follows Stanford's minimum security (minsec) requirements, which further specify steps for breach management. Here’s an overview of the procedures and response timings:
+
+1. Detection and Reporting of a Breach
+   - Monitoring and Detection: Google Cloud and Firebase utilize automated systems for constant monitoring and logging of all access and activity across their platforms. Any abnormal behavior or access patterns are flagged for immediate review by Google's security teams.
+   - Incident Reporting: If ROAR detects or suspects a breach (internally or through Google's detection systems), it is required to notify relevant stakeholders, including school districts and partners, per their data use agreements.
+   - Timing: Immediate detection and notification systems are in place. For suspected breaches, Stanford’s internal policies require that affected parties be informed as soon as possible, typically within 72 hours of detecting the issue.
+1. Initial Response and Containment
+   - Initial Assessment: Once a breach is suspected or confirmed, the vendor (Google Cloud, in this case) initiates an immediate investigation to assess the scope and impact of the incident. At the same time, ROAR’s internal team would begin containment procedures, including suspending access or isolating affected systems.
+   - Containment Measures: GCP’s infrastructure provides automated tools to block further unauthorized access, including halting affected services, rotating encryption keys, or revoking compromised credentials.
+   - Timing: Containment actions are typically initiated within hours of detecting the breach.
+1. Investigation and Root Cause Analysis
+   - Forensic Analysis: Google’s security team works on identifying the root cause of the breach using forensic tools to trace the source and scope of the compromise. They examine logs, system changes, and any unauthorized access points.
+   - ROAR Team’s Role: The ROAR team collaborates with Google to provide context for the incident and ensure Stanford’s data is safeguarded. ROAR's internal team, governed by Stanford’s security policies, plays a key role in determining what data, if any, has been compromised.
+   - Timing: The investigation process can take 24 to 72 hours, depending on the complexity of the breach.
+1. Notification of Affected Parties
+   - Stakeholder Notification: In the event that personally identifiable information (PII) or sensitive information is compromised, ROAR, following Stanford’s minsec requirements, would notify affected school districts and individuals. The notification includes the type of data affected, the estimated scope, and steps taken to mitigate further risk.
+   - Timing: Stakeholders are notified within 72 hours of confirming the breach.
+1. Remediation and Recovery
+   - Remediation Plan: Once the breach is contained, the vendor (Google Cloud) and ROAR initiate a remediation process, which may involve restoring systems from secure backups, reconfiguring security settings, or enhancing system defenses to prevent future occurrences.
+   - Data Restoration: Any lost or corrupted data is restored from encrypted backups maintained on Google Cloud’s infrastructure, and system integrity is verified before returning services to normal operation.
+   - Timing: Depending on the severity, the recovery process can take between 24 hours to several days.
+1. Post-Incident Review and Reporting
+   - Post-Mortem Analysis: After the issue is fully resolved, ROAR and Google Cloud perform a post-mortem analysis to identify lessons learned and implement additional security measures where needed. This analysis is shared with relevant parties if necessary.
+   - Reporting: ROAR provides a detailed report to stakeholders (e.g., school districts) on the nature of the breach, the steps taken to mitigate it, and the corrective actions to prevent future incidents.
+   - Timing: The post-incident report is generally provided within two weeks of the breach being fully resolved.
+
+Key Timing Overview:
+
+- Detection/Initial Notification: Immediate; stakeholders notified within 72 hours.
+- Containment: Within hours of breach detection.
+- Investigation: Completed within 24 to 72 hours.
+- Full Remediation and Recovery: Can take 1-5 days, depending on complexity.
+- Post-Incident Report: Delivered within two weeks.
 
 ### Response Steps
 
@@ -157,15 +197,16 @@ All user activities within the ROAR system are logged to ensure transparency and
 
 ### Monitoring
 
-TODO: How long are logs maintained
-TODO: Add information about GCP monitoring
-TODO: Add information about ROAR monitoring
+> TODO: How long are logs maintained
+> TODO: Add information about GCP monitoring
+> TODO: Add information about ROAR monitoring
 
 ---
 
+<!---
 ## Data Protection Impact Assessment (DPIA)
 
-TODO: Review this
+> TODO: Review this
 
 ROAR conducts DPIAs to assess risks and implement mitigation strategies for data processing activities that involve sensitive information.
 
@@ -176,6 +217,7 @@ ROAR conducts DPIAs to assess risks and implement mitigation strategies for data
 1. **Document Findings**: DPIAs are documented and updated regularly as part of compliance reviews.
 
 ---
+-->
 
 ## Security Certifications
 
@@ -203,7 +245,7 @@ The **Information Security Officer is responsible** for ensuring that all ROAR t
 
 ## Employee Training and Awareness Documentation
 
-TODO: Review this
+> TODO: Review this
 
 ROAR requires all employees and contractors to complete regular training on data privacy and information security best practices.
 
@@ -221,17 +263,17 @@ ROAR conducts periodic security risk assessments to identify vulnerabilities and
 
 ### Vulnerability Scanning
 
-TODO: Add information on Qualys vulnerability scanning
+> TODO: Add information on Qualys vulnerability scanning
 
 ### Penetration Testing
 
-TODO: Add information on pen testing
+> TODO: Add information on pen testing
 
 ---
 
 ## Business Continuity and Disaster Recovery Plan
 
-TODO: Fix this
+> TODO: Fix this
 
 ROAR maintains a disaster recovery plan to ensure the availability of services in case of system outages or disasters.
 
@@ -246,7 +288,7 @@ ROAR maintains a disaster recovery plan to ensure the availability of services i
 
 ROAR maintains detailed data flow diagrams that describe how data moves through the system.
 
-TODO: link to the DFDs
+> TODO: link to the DFDs
 
 [stanford-minsec]: https://uit.stanford.edu/guide/securitystandards#security-standards-applications
 [Jamf]: https://uit.stanford.edu/service/StanfordJamf
@@ -254,13 +296,13 @@ TODO: link to the DFDs
 [Stanford Device Registration]: https://uit.stanford.edu/service/registration
 [Stanford Data Farm]: https://redivis.com/Stanford
 
-TODO: Add information on auth and using the identity platform.
+> TODO: Add information on auth and using the identity platform.
 
 While ROAR does not use SAML 2.0, we provide a modern and secure Single Sign-On (SSO) solution through OpenID Connect (OIDC), which is built on top of OAuth 2.0. OIDC is widely adopted for web and mobile applications and is considered a secure and streamlined protocol for identity management. This is the protocal that we use for integrating with SSO providers like Clever and ClassLink. This solution offers the same high level of security and ease of integration as SAML, with the added flexibility and simplicity of the OAuth framework.
 
 ## Software Development Lifecycle Security Controls
 
-All ROAR software developers, include ROAR assessment developers must adhere to the following security controls:
+All ROAR software developers, including ROAR assessment developers, must adhere to the following security controls:
 
 1. **Access Control** Access to GitHub must be performed using two-factor authentication and is restricted to authorized personnel.
 1. **Code Review** Code changes must be reviewed and approved in order to progress through the software development life cycle (SDLC) and deploy a version to production.
@@ -268,3 +310,17 @@ All ROAR software developers, include ROAR assessment developers must adhere to 
 1. **Automated Tests**: A successful test result is mandatory in order to continue with the SLDC and deploy a version to the production environment.
 1. **Test Failure**: In case test failures are detected, a notification is sent to relevant stakeholders. Any code change with a failed test cannot be deployed into production.
 1. **Change Approval**: All code changes need to be approved/authorized, prior to being deployed into production.
+
+## 6. Data Retention and Destruction Policy
+
+### Data Retention
+
+- Student PII and assessment data are retained only as long as necessary for educational and research purposes.
+- Data required for compliance with legal obligations will be retained for a minimum duration as mandated by applicable laws.
+
+### Data Destruction
+
+- Data no longer required is securely deleted, using cryptographic wiping for electronic records.
+- Paper records are shredded.
+
+> TODO: Add onboarding/offboarding checklist info

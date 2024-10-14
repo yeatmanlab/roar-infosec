@@ -1,6 +1,6 @@
 ---
 title: "Third-party vendor assessment report: Clever"
-author: "Adam Richie-Halford"
+author: "Adam Richie-Halford, ROAR Information Security Officer"
 lang: "en"
 date: "2024-10-12"
 ...
@@ -8,7 +8,7 @@ date: "2024-10-12"
 # ROAR Third-Party Vendor Assessment Report
 
 **Vendor**: Clever\
-**Assessor**: Adam Richie-Halford
+**Assessor**: Adam Richie-Halford, ROAR Information Security Officer
 
 ## Overview
 

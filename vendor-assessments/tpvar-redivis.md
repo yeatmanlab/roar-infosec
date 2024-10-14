@@ -8,7 +8,7 @@ date: "2024-10-12"
 # ROAR Third-Party Vendor Assessment Report
 
 **Vendor**: Redivis\
-**Assessor**: Adam Richie-Halford
+**Assessor**: Adam Richie-Halford, ROAR Information Security Officer
 
 ## Overview
 
