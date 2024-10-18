@@ -25,23 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh auth login
-
-          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
           ISSUE_BODY="It is time for the review of the Data Privacy and Information Security Manual and the Software Development Lifecycle Policies. Please ensure all sections are up to date and in compliance with current regulations. @yeatmanlab/roar-infosec-maintainers"
 
-          echo $TEAM_MEMBERS
-          echo $ISSUE_BODY
-          
           # Create the issue and mention the team
-          ISSUE_NUMBER=$(gh issue create --title "Review of Data Privacy and Information Security Manual" --body "$ISSUE_BODY" | tail -n1 | rev | cut -d/ -f 1 | rev)
-
-          echo ISSUE_NUMBER
-          echo $ISSUE_NUMBER
-
-          # Loop through each team member and assign them to the issue
-          for MEMBER in $TEAM_MEMBERS
-          do
-            echo $MEMBER
-            gh issue assign $ISSUE_NUMBER --assignee $MEMBER
-          done
+          gh issue create --title "Review of Data Privacy and Information Security Manual" --body "$ISSUE_BODY" --assignee richford

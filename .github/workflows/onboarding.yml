@@ -37,12 +37,4 @@ jobs:
           ISSUE_BODY: ${{ env.content }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
-
-          ISSUE_NUMBER=$(gh issue create --title "New Employee Onboarding Checklist for ${{ github.event.inputs.employee_name }}" --body "$ISSUE_BODY" --label onboarding | tail -n1 | rev | cut -d/ -f 1 | rev)
-
-          # Loop through each team member and assign them to the issue
-          for MEMBER in $TEAM_MEMBERS
-          do
-            gh issue assign $ISSUE_NUMBER --assignee $MEMBER
-          done
+          gh issue create --title "New Employee Onboarding Checklist for ${{ github.event.inputs.employee_name }}" --body "$ISSUE_BODY" --label onboarding --assignee richford
