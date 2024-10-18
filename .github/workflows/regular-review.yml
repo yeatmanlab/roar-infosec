@@ -6,6 +6,10 @@ on:
     - cron: '0 0 1 1,7 *'
   workflow_dispatch:   # Manual trigger option
 
+permissions:
+  contents: write           # Needed for creating issues and interacting with repos
+  issues: write             # Needed to create and manage issues
+
 jobs:
   create-review-issue:
     runs-on: ubuntu-latest
