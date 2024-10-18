@@ -39,14 +39,15 @@ jobs:
 
       - name: Replace placeholders in markdown
         run: |
-          ls .
-          pwd
-          sed -i"" "s/{{ version }}/$VERSION/g" roar-data-privacy-and-information-security-manual.md
-          sed -i"" "s/{{ commit }}/$COMMIT_HASH/g" roar-data-privacy-and-information-security-manual.md
-          sed -i"" "s/{{ commit_date }}/$COMMIT_DATE/g" roar-data-privacy-and-information-security-manual.md
-          sed -i"" "s/{{ version }}/$VERSION/g" roar-sldc.md
-          sed -i"" "s/{{ commit }}/$COMMIT_HASH/g" roar-sldc.md
-          sed -i"" "s/{{ commit_date }}/$COMMIT_DATE/g" roar-sldc.md
+          sed -i "s/{{ version }}/$VERSION/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ commit }}/$COMMIT_HASH/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ version }}/$VERSION/g" roar-sldc.md
+          sed -i "s/{{ commit }}/$COMMIT_HASH/g" roar-sldc.md
+          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" roar-sldc.md
+          sed -i "s/{{ version }}/$VERSION/g" roar-bcdr.md
+          sed -i "s/{{ commit }}/$COMMIT_HASH/g" roar-bcdr.md
+          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" roar-bcdr.md
 
       - name: Convert Markdown to PDF
         run: |
