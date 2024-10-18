@@ -21,9 +21,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TEAM_MEMBERS=$(gh api /orgs/yeatmanlab/teams/roar/members --jq '.[].login')
+          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar/members --jq '.[].login')
           for MEMBER in $TEAM_MEMBERS
           do
-            ISSUE_BODY="Please acknowledge that you have reviewed the Data Privacy and Information Security Manual for the year by commenting 'Acknowledged' below."
+            ISSUE_BODY="Please acknowledge that you have reviewed the Data Privacy and Information Security Manual and accompanying documents by commenting 'Acknowledged' below."
             gh issue create --title "Acknowledgment Request for $MEMBER" --body "$ISSUE_BODY" --assignee $MEMBER
           done

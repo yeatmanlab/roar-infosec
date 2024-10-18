@@ -41,4 +41,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue close ${{ github.event.issue.number }} --comment "Thank you, ${{ env.USER }}, for acknowledging the manual."
+          gh issue close ${{ github.event.issue.number }} --comment "Thank you, ${{ env.USER }}, for confirming that you have read the infosec materials."
