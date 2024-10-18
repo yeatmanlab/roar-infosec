@@ -27,7 +27,7 @@ jobs:
         id: onboarding_checklist
         run: |
           CONTENT=$(cat employee-lifecycle/onboarding-checklist.md)
-          CONTENT="**Employee Name:** ${{ github.event.inputs.employee_name }}\n**Employee Email:** ${{ github.event.inputs.employee_email }}\n\n$CONTENT"
+          CONTENT="**Employee Name:** ${{ github.event.inputs.employee_name }}\\n**Employee Email:** ${{ github.event.inputs.employee_email }}\\n\\n$CONTENT"
           echo "content<<EOF" >> $GITHUB_ENV
           echo "$CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV

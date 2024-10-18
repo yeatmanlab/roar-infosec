@@ -23,13 +23,14 @@ jobs:
         run: |
           ISSUE_BODY="It's time to generate infosec acknowledgement issues for all of the ROAR team.\n\n"
           ISSUE_BODY+="Perform these commands on your command line:\n"
-          ISSUE_BODY+="```\n"
+          ISSUE_BODY+="\`\`\`\n"
           ISSUE_BODY+="TEAM_MEMBERS=\$(gh api orgs/yeatmanlab/teams/roar/members --jq '.[].login')\n"
           ISSUE_BODY+="for MEMBER in \$TEAM_MEMBERS\n"
           ISSUE_BODY+="do\n"
           ISSUE_BODY+="  ISSUE_BODY=\"Please acknowledge that you have reviewed the Data Privacy and Information Security Manual and accompanying documents by commenting 'Acknowledged' below.\"\n"
           ISSUE_BODY+="  gh issue create --title \"Acknowledgment Request for \$MEMBER\" --body \"\$ISSUE_BODY\" --assignee \$MEMBER\n"
           ISSUE_BODY+="done\n"
+          ISSUE_BODY+="\`\`\`\n"
 
           gh issue create --title "Create Acknowledgement Requests" --body "$ISSUE_BODY" --assignee richford
 
