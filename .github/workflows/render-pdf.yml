@@ -19,7 +19,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies (Pandoc)
-        run: sudo apt-get install -y pandoc
+        run: sudo apt-get install -y pandoc pdflatex
 
       - name: Get last commit info
         id: vars
