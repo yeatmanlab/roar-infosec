@@ -60,6 +60,7 @@ jobs:
         run: |
           make infosec 
           make sldc
+          make bcdr
 
       - name: Commit and push changes
         run: |
