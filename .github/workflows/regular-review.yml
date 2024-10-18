@@ -19,7 +19,7 @@ jobs:
 
       - name: Get team members and create issue
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
           ISSUE_BODY="It is time for the review of the Data Privacy and Information Security Manual and the Software Development Lifecycle Policies. Please ensure all sections are up to date and in compliance with current regulations. @yeatmanlab/roar-infosec-maintainers"
