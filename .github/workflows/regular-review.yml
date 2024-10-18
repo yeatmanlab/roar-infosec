@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh auth login --with-token <<< "$GH_TOKEN"
+          gh auth login
 
           TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
           ISSUE_BODY="It is time for the review of the Data Privacy and Information Security Manual and the Software Development Lifecycle Policies. Please ensure all sections are up to date and in compliance with current regulations. @yeatmanlab/roar-infosec-maintainers"
