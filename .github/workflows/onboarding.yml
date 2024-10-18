@@ -37,7 +37,7 @@ jobs:
           ISSUE_BODY: ${{ env.content }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
+          TEAM_MEMBERS=$(gh api /orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
 
           ISSUE_NUMBER=$(gh issue create --title "New Employee Onboarding Checklist for ${{ github.event.inputs.employee_name }}" --body "$ISSUE_BODY" --label onboarding)
 
