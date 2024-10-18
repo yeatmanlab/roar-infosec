@@ -66,6 +66,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add version.txt
-          git add ROAR-data-privacy-and-information-security-manual.pdf -f
+          git add roar-data-privacy-and-information-security-manual.pdf -f
+          git add roar-sdlc.pdf -f
+          git add roar-bcdr.pdf -f
           git commit -m "Updated version $VERSION and rendered PDF from commit $COMMIT_HASH"
           git push origin main
