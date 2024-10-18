@@ -39,13 +39,17 @@ jobs:
 
       - name: Replace placeholders in markdown
         run: |
-          sed -i "s/{{ version }}/$VERSION/g" ROAR-data-privacy-and-information-security-manual.md
-          sed -i "s/{{ commit }}/$COMMIT_HASH/g" ROAR-data-privacy-and-information-security-manual.md
-          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" ROAR-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ version }}/$VERSION/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ commit }}/$COMMIT_HASH/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" roar-data-privacy-and-information-security-manual.md
+          sed -i "s/{{ version }}/$VERSION/g" roar-sldc.md
+          sed -i "s/{{ commit }}/$COMMIT_HASH/g" roar-sldc.md
+          sed -i "s/{{ commit_date }}/$COMMIT_DATE/g" roar-sldc.md
 
       - name: Convert Markdown to PDF
         run: |
-          pandoc --number-sections ROAR-data-privacy-and-information-security-manual.md -o ROAR-data-privacy-and-information-security-manual.pdf
+          make infosec 
+          make sldc
 
       - name: Commit and push changes
         run: |

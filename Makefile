@@ -1,22 +1,33 @@
 # Makefile for generating PDF from Markdown
 
 # Variables
-INFOSEC_MD = ROAR-data-privacy-and-information-security-manual.md
+INFOSEC_MD = roar-data-privacy-and-information-security-manual.md
 INFOSEC_PDF = $(patsubst %.md, %.pdf, $(INFOSEC_MD))
+
+SDLC_MD = roar-sdlc.md
+SDLC_PDF = $(patsubst %.md, %.pdf, $(SDLC_MD))
+
+BCDR_MD = roar-bcdr.md
+BCDR_PDF = $(patsubst %.md, %.pdf, $(BCDR_MD))
 
 MD_FILES = $(wildcard vendor-assessments/*.md)
 VENDOR_ASSESSMENTS_DIR = vendor-assessments
 
 # Default target
-all: pdf
+all: infosec sldc bcdr
 
 PANDOC_OPTS = -f gfm --template ./template/eisvogel.latex \
               -V linkcolor=blue \
 			  -V header-includes:'\usepackage[export]{adjustbox} \let\includegraphicsbak\includegraphics \renewcommand*{\includegraphics}[2][]{\includegraphicsbak[frame,\#1]{\#2}}'
 
-# Command to generate PDF from Markdown
-pdf: $(INFOSEC_MD)
+infosec: $(INFOSEC_MD)
 	@pandoc $(INFOSEC_MD) $(PANDOC_OPTS) -o $(INFOSEC_PDF)
+
+sldc: $(SDLC_MD)
+	@pandoc $(SDLC_MD) $(PANDOC_OPTS) -o $(SDLC_PDF)
+
+bcdr: $(BCDR_MD)
+	@pandoc $(BCDR_MD) $(PANDOC_OPTS) -o $(BCDR_PDF)
 
 # Command to generate PDFs for all markdown files in the vendor-assessments folder
 vendor-assessments: $(MD_FILES)
@@ -30,9 +41,11 @@ install:
 	# Install pandoc (Linux or macOS). For Windows, use the installer from the official website
 	which pandoc || (sudo apt-get update && sudo apt-get install -y pandoc || brew install pandoc)
 
-# Clean command to remove the generated PDF
+# Clean command to remove the generated PDFs
 clean:
 	rm -f $(INFOSEC_PDF)
+	rm -f $(SDLC_PDF)
+	rm -f $(BCDR_PDF)
 
 # Phony targets
-.PHONY: all pdf clean install vendor-assessments
+.PHONY: all clean install vendor-assessments bcdr sdlc infosec
