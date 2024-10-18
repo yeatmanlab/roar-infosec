@@ -38,5 +38,7 @@ jobs:
           git push origin main
 
       - name: Close the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh issue close ${{ github.event.issue.number }} --comment "Thank you, ${{ env.USER }}, for acknowledging the manual."

@@ -18,6 +18,8 @@ jobs:
         run: sudo apt-get install gh
 
       - name: Get team members and create issues
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar/members --jq '.[].login')
           for MEMBER in $TEAM_MEMBERS

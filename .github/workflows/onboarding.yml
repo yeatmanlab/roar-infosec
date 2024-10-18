@@ -35,6 +35,7 @@ jobs:
       - name: Create GitHub issue for onboarding
         env:
           ISSUE_BODY: ${{ env.content }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar-infosec-maintainers/members --jq '.[].login')
 
