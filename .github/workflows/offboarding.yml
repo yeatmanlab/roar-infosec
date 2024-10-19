@@ -25,9 +25,13 @@ jobs:
 
       - name: Read offboarding checklist
         id: offboarding_checklist
+        env:
+          EMPLOYEE_NAME: ${{ github.event.inputs.employee_name }}
+          EMPLOYEE_EMAIL: ${{ github.event.inputs.employee_email }}
         run: |
+          sed -i "s/{{ employee_name }}/$EMPLOYEE_NAME/g" employee-lifecycle/onboarding-checklist.md
+          sed -i "s/{{ employee_email }}/$EMPLOYEE_EMAIL/g" employee-lifecycle/onboarding-checklist.md
           CONTENT=$(cat employee-lifecycle/offboarding-checklist.md)
-          CONTENT="**Employee Name:** ${{ github.event.inputs.employee_name }}\\n**Employee Email:** ${{ github.event.inputs.employee_email }}\\n\\n$CONTENT"
           echo "content<<EOF" >> $GITHUB_ENV
           echo "$CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -35,6 +39,7 @@ jobs:
       - name: Create GitHub issue for offboarding
         env:
           ISSUE_BODY: ${{ env.content }}
+          EMPLOYEE_NAME: ${{ github.event.inputs.employee_name }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue create --title "Employee Offboarding Checklist for ${{ github.event.inputs.employee_name }}" --body "$ISSUE_BODY" --label offboarding --assignee richford
+          gh issue create --title "Employee Offboarding Checklist for $EMPLOYEE_NAME" --body "$ISSUE_BODY" --label offboarding --assignee richford

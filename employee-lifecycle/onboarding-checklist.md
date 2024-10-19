@@ -1,5 +1,8 @@
 # ROAR Employee Onboarding Checklist
 
+**Employee Name**: {{ employee_name }}\
+**Employee Email**: {{ employee_email }}
+
 ## All employees
 
 - [ ] Google Workspace
@@ -33,6 +36,19 @@
 - [ ] Google Cloud Platform (GCP) / Firebase
   - [ ] Invite employee to the development Firebase projects using their Stanford email.
   - [ ] After verifying that employee is listed on ROAR IRBs, invite them to the staging and production Firebase projects.
+
+- [ ] Namecheap
+  - [ ] If employee will manage ROAR domain names, invite them as a domain manager in Namecheap using their Stanford email.
+
+## Employees requiring access to ROAR security tools
+
+- [ ] Qualys
+  - [ ] Invite employee to ROAR project using their Stanford email.
+  - [ ] Share all relevant applications with employee
+
+- [ ] Beagle Security
+  - [ ] Invite employee to ROAR project using their Stanford email.
+  - [ ] Share all relevant applications with employee
 
 ## Employees requiring access to SSO or rostering integrations
 

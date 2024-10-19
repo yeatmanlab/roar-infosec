@@ -8,10 +8,6 @@ titlepage-color: "8C1515"
 titlepage-text-color: "FFFFFF"
 ...
 
-**Version**: `{{ version }}`\
-**Last Updated by Commit**: `{{ commit }}`\
-**Last updated on**: `{{ commit_date }}`
-
 ## Introduction
 
 ### Purpose

@@ -5,10 +5,6 @@ keywords: [Software development lifecycle, ROAR]
 lang: "en"
 ...
 
-**Version**: `{{ version }}`\
-**Last Updated by Commit**: `{{ commit }}`\
-**Last updated on**: `{{ commit_date }}`
-
 ## Overview
 
 The secure Software Development Lifecycle (SDLC) at ROAR outlines the procedures, policies, and security measures that govern how software changes are managed, implemented, and deployed within the ROAR platform. The SDLC process ensures that changes to the system are tracked, reviewed, tested, and implemented in a manner that prioritizes security, confidentiality, and compliance with industry best practices.

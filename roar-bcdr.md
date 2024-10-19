@@ -5,10 +5,6 @@ keywords: [ROAR, Business Continuity, Disaster Recovery]
 lang: "en"
 ...
 
-**Version**: `{{ version }}`\
-**Last Updated by Commit**: `{{ commit }}`\
-**Last updated on**: `{{ commit_date }}`
-
 > Note: This document is in draft form and is not currently enforced.
 
 The Business Continuity and Disaster Recovery (BC/DR) Plan for ROAR outlines the processes and strategies in place to ensure the continuation of critical operations and the rapid recovery of essential services in the event of a disruption. The plan is designed to address a range of potential disruptions, including system failures, security incidents, natural disasters, and other unforeseen events that could impact ROAR's ability to provide its services.

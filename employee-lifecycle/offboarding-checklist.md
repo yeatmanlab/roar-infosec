@@ -1,5 +1,8 @@
 # ROAR Employee Onboarding Checklist
 
+**Employee Name**: {{ employee_name }}\
+**Employee Email**: {{ employee_email }}
+
 - [ ] Google Workspace
   - [ ] Transfer ownership of files and documents to relevant managers or team members.
   - [ ] Revoke access to shared drives.
@@ -8,14 +11,6 @@
   - [ ] Remove the employee from the ROAR GitHub organization.
   - [ ] Revoke access to all repositories.
   - [ ] Ensure any personal access tokens related to the organization are revoked.
-
-- [ ] Sentry
-  - [ ] Remove the employee's Sentry account or revoke access to projects.
-  - [ ] Reassign monitoring tasks previously managed by the employee.
-
-- [ ]  Cypress Cloud
-  - [ ] Remove the employee's access to Cypress Cloud.
-  - [ ] Transfer ownership of any tests or projects managed by the employee.
 
 - [ ] Clever: Revoke access to Clever accounts and integrations.
 
@@ -36,5 +31,27 @@
 
 - [ ] General Cleanup
   - [ ] Review and reassign any tasks or projects the employee was responsible for.
-  - [ ] Ensure that any ROAR data on personal devices has been deleted or destroyed.
+  - [ ] Employee attests that any ROAR data on personal devices has been deleted or destroyed.
   - [ ] Ensure that all ROAR devices and physical security passes are returned.
+
+## Developer Integrations
+
+- [ ] Sentry
+  - [ ] Remove the employee's Sentry account or revoke access to projects.
+  - [ ] Reassign monitoring tasks previously managed by the employee.
+
+- [ ] Cypress Cloud
+  - [ ] Remove the employee's access to Cypress Cloud.
+  - [ ] Transfer ownership of any tests or projects managed by the employee.
+
+- [ ] Namecheap
+  - [ ] Transfer ownership/management of any ROAR domains.
+  - [ ] Remove access to ROAR domains.
+
+- [ ] Qualys
+  - [ ] Transfer ownership/management of any ROAR applications.
+  - [ ] Remove access to ROAR applications.
+
+- [ ] Beagle Security
+  - [ ] Transfer ownership/management of any ROAR applications.
+  - [ ] Remove access to ROAR applications.
