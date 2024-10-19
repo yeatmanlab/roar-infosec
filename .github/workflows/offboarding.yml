@@ -29,8 +29,8 @@ jobs:
           EMPLOYEE_NAME: ${{ github.event.inputs.employee_name }}
           EMPLOYEE_EMAIL: ${{ github.event.inputs.employee_email }}
         run: |
-          sed -i "s/{{ employee_name }}/$EMPLOYEE_NAME/g" employee-lifecycle/onboarding-checklist.md
-          sed -i "s/{{ employee_email }}/$EMPLOYEE_EMAIL/g" employee-lifecycle/onboarding-checklist.md
+          sed -i "s/{{ employee_name }}/$EMPLOYEE_NAME/g" employee-lifecycle/offboarding-checklist.md
+          sed -i "s/{{ employee_email }}/$EMPLOYEE_EMAIL/g" employee-lifecycle/offboarding-checklist.md
           CONTENT=$(cat employee-lifecycle/offboarding-checklist.md)
           echo "content<<EOF" >> $GITHUB_ENV
           echo "$CONTENT" >> $GITHUB_ENV
