@@ -9,7 +9,7 @@ TEAM_MEMBERS=$(gh api orgs/yeatmanlab/teams/roar/members --jq '.[].login')
 
 for MEMBER in $TEAM_MEMBERS
 do
-  ISSUE_BODY="Please acknowledge that you have reviewed the Data Privacy and Information Security Manual and accompanying documents by commenting 'Acknowledged' below."
-  gh issue create --title "Acknowledgment Request for $MEMBER" --body "$ISSUE_BODY" --assignee $MEMBER
+  ISSUE_BODY="@$MEMBER, it is time for the quarterly review of ROAR's information security materials. Please review the Data Privacy and Information Security Manual and SDLC policies in this repository. When you are done, comment 'Confirmed' below and a bot will take care of closing this issue."
+  gh issue create --title "Acknowledgment request for $MEMBER" --body "$ISSUE_BODY" --assignee $MEMBER
 done
 ```

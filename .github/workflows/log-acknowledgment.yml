@@ -10,9 +10,9 @@ jobs:
 
     # First, we add conditions to check if the comment contains "Acknowledged",
     # if the comment comes from the assignee, and if the issue is an acknowledgment issue.
-    if: contains(github.event.comment.body, 'Acknowledged') && 
+    if: contains(github.event.comment.body, 'Confirmed') && 
         github.event.issue.assignee.login == github.event.comment.user.login &&
-        contains(github.event.issue.title, 'Acknowledgment')
+        contains(github.event.issue.title, 'Acknowledgment request')
 
     steps:
       - name: Checkout repository
