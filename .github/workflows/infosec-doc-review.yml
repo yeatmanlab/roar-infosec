@@ -1,4 +1,4 @@
-name: Review Reminder
+name: Infosec Docs Review Reminder
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
       - name: Install GitHub CLI
         run: sudo apt-get install gh
 
-      - name: Get team members and create issue
+      - name: Create Issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

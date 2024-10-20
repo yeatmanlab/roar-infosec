@@ -20,15 +20,14 @@ jobs:
       - name: Read issue body
         id: acknowledgment_request
         run: |
-          CONTENT=$(cat .github/workflows/acknowledgment-request-template.md)
+          CONTENT=$(cat employee-lifecycle/account-review-checklist.md)
           echo "content<<EOF" >> $GITHUB_ENV
           echo "$CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Get team members and create issues
+      - name: Create Issue
         env:
           ISSUE_BODY: ${{ env.content }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue create --title "Create Acknowledgement Requests" --body "$ISSUE_BODY" --assignee richford
-
+          gh issue create --title "Quarterly Account Review" --body "$ISSUE_BODY" --assignee richford
