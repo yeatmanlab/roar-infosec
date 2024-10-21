@@ -1,7 +1,7 @@
 # Makefile for generating PDF from Markdown
 
 # Variables
-INFOSEC_MD = roar-data-privacy-and-information-security-manual.md
+INFOSEC_MD = roar-data-privacy-and-infosec-manual.md
 INFOSEC_PDF = $(patsubst %.md, %.pdf, $(INFOSEC_MD))
 
 SDLC_MD = roar-sdlc.md

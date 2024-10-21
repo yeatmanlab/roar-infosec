@@ -15,8 +15,8 @@ This repository is dedicated to managing the key documentation and automated wor
   - [security-review.md](./github-templates/security-review.md): A security review checklist that must be reviewed before ROAR software changes are deployed into production
 - [roar-bcdr.md](./roar-bcdr.md): ROAR's business continuity and disaster recovery plan in markdown format
 - [roar-bcdr.pdf](./roar-bcdr.pdf): ROAR's business continuity and disaster recovery plan in PDF format
-- [roar-data-privacy-and-information-security-manual.md](./roar-data-privacy-and-information-security-manual.md): ROAR's data privacy and information security manual in markdown format
-- [roar-data-privacy-and-information-security-manual.pdf](./roar-data-privacy-and-information-security-manual.pdf): ROAR's data privacy and information security manual in PDF format
+- [roar-data-privacy-and-infosec-manual.md](./roar-data-privacy-and-infosec-manual.md): ROAR's data privacy and information security manual in markdown format
+- [roar-data-privacy-and-infosec-manual.pdf](./roar-data-privacy-and-infosec-manual.pdf): ROAR's data privacy and information security manual in PDF format
 - [roar-sdlc.md](./roar-sdlc.md): ROAR's Software Development Lifecycle policies and procedures in markdown format.
 - [roar-sdlc.pdf](./roar-sdlc.pdf): ROAR's Software Development Lifecycle policies and procedures in PDF format.
 - [sisa-training-log.md](./sisa-training-log.md): A training log documenting ROAR developers' completion of required Stanford Information Security Academy Training
