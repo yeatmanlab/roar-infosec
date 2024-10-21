@@ -29,7 +29,7 @@ It is important to note that GitHub's security compliance confers no security be
 1. **Access Control** Access to GitHub is performed using two-factor authentication and is restricted to authorized personnel.
 1. **Code Review** Code changes must be reviewed and approved in order to progress through the software development life cycle (SDLC) and deploy a version to production.
 1. **Code Vulnerability Scanning**: Vulnerability scans for the source code are performed to identify security issues. High/critical issues are remediated in a timely manner.
-1. **Automated Tests**: A successful test result is mandatory in order to continue with the SDLC and deploy a version to the production environment.
+1. **Automated Tests**: A successful test result is mandatory in order to continue with the SLDC and deploy a version to the production environment.
 1. **Test Failure**: In case test failures are detected, a notification is sent to relevant stakeholders. Any code change with a failed test cannot be deployed into production.
 1. **Change Approval**: All code changes need to be approved/authorized, prior to being deployed into production.
 
