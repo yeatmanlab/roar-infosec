@@ -16,7 +16,7 @@ VENDOR_ASSESSMENTS_DIR = vendor-assessments
 # Default target
 all: infosec sldc bcdr
 
-PANDOC_OPTS = -f gfm --template ./template/eisvogel.latex \
+PANDOC_OPTS = -f gfm --template ./.tex-template/eisvogel.latex \
               -V linkcolor=blue \
 			  -V header-includes:'\usepackage[export]{adjustbox} \let\includegraphicsbak\includegraphics \renewcommand*{\includegraphics}[2][]{\includegraphicsbak[frame,\#1]{\#2}}'
 
