@@ -29,13 +29,13 @@ The ROAR development team comprises the following roles:
 - Developer: Responsible for developing the changes according to specifications in the ticket and ensuring all tests pass.
 - QA Team: Responsible for testing the change in the Staging environment.
 - Information Security Officer: Responsible for reviewing the [security checklist][link_security_checklist] and ensuring the change meets all security and compliance requirements.
-- Director of Technology and Integration: Responsible for authorizing and approving changes before deployment to the production environment.
+- Director of Technology and Innovation: Responsible for authorizing and approving changes before deployment to the production environment.
 
 ## SDLC Process
 
 The following steps outline the full SDLC process for managing code changes:
 
-1. Request and Documentation:
+1. Change Request:
 
    - Any change, whether a new feature requests or a bug fix, begins with the creation of a ticket.
    - Tickets are logged and prioritized using GitHub Issues in the centralized [ROAR repository][link_roar_issues]. Each ticket should document the required change, the impact of the change, and any relevant security, confidentiality, and privacy considerations.
@@ -63,7 +63,7 @@ The following steps outline the full SDLC process for managing code changes:
 1. Change Approval and Deployment:
 
    - Approval for code changes is required before they can be merged into production.
-   - The ROAR Director of Technology and Integration or their designee reviews and authorizes changes. Individual developers cannot deploy code directly to the production environment.
+   - The ROAR Director of Technology and Innovation or their designee reviews and authorizes changes. Individual developers cannot deploy code directly to the production environment.
    - Approval is recorded by minting a new version number tag and release on GitHub. These actions then trigger deployment through GitHub actions.
 
 1. Post-Deployment Monitoring:
@@ -100,7 +100,7 @@ The SDLC process integrates the following security controls to ensure the safety
 
 1. Change Approval
 
-   - All code changes must be approved by the ROAR Director of Technology and Integration or a designated reviewer.
+   - All code changes must be approved by the ROAR Director of Technology and Innovation or a designated reviewer.
    - Approval is required before deploying the change to production.
 
 ## Conclusion

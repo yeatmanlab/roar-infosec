@@ -143,7 +143,7 @@ These security measures are designed to protect both ROAR's internal systems and
     - ClassLink
     - Redivis / Stanford Data Farm
   - Use only your `@stanford.edu` email address to conduct ROAR business.
-- **Developers, QA Team, and ROAR's Director of Technology and Integration** (in addition to the employee responsibilities above)
+- **Developers, QA Team, and ROAR's Director of Technology and Innovation** (in addition to the employee responsibilities above)
   - Complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa]
   - Adhere to and enforce the [ROAR software development lifecycle][link_roar_sdlc].
 

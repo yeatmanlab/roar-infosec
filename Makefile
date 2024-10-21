@@ -23,7 +23,7 @@ PANDOC_OPTS = -f gfm --template ./.tex-template/eisvogel.latex \
 infosec: $(INFOSEC_MD)
 	@pandoc $(INFOSEC_MD) $(PANDOC_OPTS) -o $(INFOSEC_PDF)
 
-sldc: $(SDLC_MD)
+sdlc: $(SDLC_MD)
 	@pandoc $(SDLC_MD) $(PANDOC_OPTS) -o $(SDLC_PDF)
 
 bcdr: $(BCDR_MD)
