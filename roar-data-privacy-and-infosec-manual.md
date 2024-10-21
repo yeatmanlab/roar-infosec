@@ -31,7 +31,7 @@ This section covers how data is collected, how it is used for operational and re
 The data that ROAR collects from users can be broadly separated into two categories:
 
 - **Personal Data**:
-  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores. For research purposes, ROAR also stores demographic information, such as a student's IEP status, free and reduced lunch status, and home language. When this information is used in research, it is always deidentified before publication.
+  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores. For research purposes, ROAR also stores demographic information, such as a student's IEP status, free and reduced lunch status, and home language. When this information is used in research, it is always de-identified before publication.
 
   While the ROAR application does not directly store student IP addresses, these may be logged in Firebase audit logs for security purposes. These logs could be accessed during a security incident or breach investigation to aid in tracing unauthorized access or suspicious activity.
 
@@ -76,7 +76,7 @@ ROAR retains and destroys data in compliance with applicable privacy regulations
   If continued retention is required for archival or legal purposes, the necessity for this retention will be documented, and the data will be de-identified to the fullest extent possible.
 
 - Partnership Data:
-  - Purpose: partnership data is collected and maintained to fulfill ROAR’s obligations to educational partners, such as providing score reports, progress updates, and other services required by partner schools and districts.
+  - Purpose: partnership data is collected and maintained to fulfill ROAR's obligations to educational partners, such as providing score reports, progress updates, and other services required by partner schools and districts.
   - Composition: this data comprises all assessment and personal data for participants that have opted out of ROAR research.
   - Retention: this data is retained only as long as necessary to meet contractual and reporting obligations to our educational partners. This may include providing student score reports, assessment data, and other partner-requested services.
   - Destruction: Once partnership data is no longer required to meet the contractual or operational obligations to educational partners, it will be securely deleted within one year. This applies to both data stored in production systems and backup environments.
@@ -130,7 +130,7 @@ These security measures are designed to protect both ROAR's internal systems and
   - Review this manual quarterly
   - Complete required security training
   - Enroll all personal and Stanford-owned devices used for work with [Stanford Device Registration][link_stanford_device_registration]. Enroll each device for use with high risk data. Ensure that this registration includes
-    - enrollement in either [BigFix][link_bigfix] or [Jamf][link_jamf],
+    - enrollment in either [BigFix][link_bigfix] or [Jamf][link_jamf],
     - whole disk encryption using the operating system's native encryption facilities, and
     - malware scanning using Crowdstrike Endpoint Antivirus or a similar [Stanford approved and managed anti-malware solution][link_stanford_anti_malware].
   - Enable multi-factor authentication on all GitHub accounts used for ROAR development.
@@ -171,7 +171,7 @@ The only password requirement for participants, caregivers, educators, and schoo
 
 ROAR users can also authenticate using the Clever or ClassLink SSO providers. For these, ROAR uses the modern and secure OpenID Connect (OIDC) protocol, which is built on top of OAuth 2.0. OIDC is widely adopted for web and mobile applications and is considered a secure and streamlined protocol for identity management.
 
-All ROAR employees have `@stanford.edu` email accounts and use only those accounts to conduct business. In accodance with minsec, all ROAR employees must use **Stanford Duo Mobile** for multi-factor authentication when accessing privileged accounts.
+All ROAR employees have `@stanford.edu` email accounts and use only those accounts to conduct business. In accordance with minsec, all ROAR employees must use **Stanford Duo Mobile** for multi-factor authentication when accessing privileged accounts.
 
 #### Onboarding and Offboarding
 

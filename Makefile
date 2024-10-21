@@ -36,6 +36,11 @@ vendor-assessments: $(MD_FILES)
 		pandoc $$file $(PANDOC_OPTS) -o $(VENDOR_ASSESSMENTS_DIR)/$$(basename $$file .md).pdf; \
 	done
 
+check-spelling:
+	@aspell --lang=en --mode=markdown -c $(INFOSEC_MD)
+	@aspell --lang=en --mode=markdown -c $(SDLC_MD)
+	@aspell --lang=en --mode=markdown -c $(BCDR_MD)
+
 # Command to install Pandoc
 install:
 	# Install pandoc (Linux or macOS). For Windows, use the installer from the official website
@@ -48,4 +53,4 @@ clean:
 	rm -f $(BCDR_PDF)
 
 # Phony targets
-.PHONY: all clean install vendor-assessments bcdr sdlc infosec
+.PHONY: all clean install vendor-assessments bcdr sdlc infosec check-spelling

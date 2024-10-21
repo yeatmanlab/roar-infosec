@@ -87,7 +87,7 @@ The SDLC process integrates the following security controls to ensure the safety
 
    - CodeQL scanning is integrated into GitHub to detect vulnerabilities and coding errors in the source code.
    - Dependency Review via GitHub's Dependabot tool automatically detect vulnerabilities in third-party dependencies.
-   - High or critical issues must be remediated before a change can proceed through the SLDC.
+   - High or critical issues must be remediated before a change can proceed through the SDLC.
 
 1. Automated Tests
 
