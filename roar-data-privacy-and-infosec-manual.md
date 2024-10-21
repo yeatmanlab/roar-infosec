@@ -106,7 +106,7 @@ The section includes details on
 
 - [**Roles and responsibilities**](#roles-and-responsibilities)
 - [**Access Control**](#access-control)
-- [**Encryption**](#encryption)
+- [**Data Storage and Encryption**](#data-storage-and-encryption)
 - [**Audit logging and monitoring**](#audit-logging-and-monitoring)
 - [**Incident Response**](#incident-response)
 - [**Vulnerability Scanning**](#vulnerability-scanning)
@@ -177,7 +177,7 @@ All ROAR employees have `@stanford.edu` email accounts and use only those accoun
 
 User accounts are created for new employees based on their roles. Access is removed immediately upon termination of employment or change in role. The information security officer is responsible for maintaining both an [onboarding checklist][link_onboarding_checklist] and an [offboarding checklist][link_offboarding_checklist] to ensure access control. ROAR managers are responsible for completing these checklists when employees join or leave the team.
 
-### Encryption
+### Data Storage and Encryption
 
 ROAR enforces strict encryption policies to protect sensitive data. All data in transit, either between the ROAR application and users, or between different ROAR storage systems, is encrypted using **TLS/HTTPS**.
 When data is transmitted internally between ROAR employees, it is transmitted using secure mail or the Stanford managed, non-consumer Google Drive (described below), which is approved for high-risk data.
