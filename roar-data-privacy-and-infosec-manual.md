@@ -48,19 +48,11 @@ ROAR maintains detailed data flow diagrams (DFDs) that describe how data moves t
 
 ### User Rights
 
-Parents and guardians have the right to opt out of participation in ROAR and request that any existing data for their student be removed. These requests are made through each student's school.
-
-> TODO:
-> Insert more specific language about the opt-out process.
-> Include the steps that each team takes to respond to an opt-out data deletion request.
-> Do we include other GDPR-like rights. For example do data subjects (students and their guardians) have the right to access, correct, and delete their data?
+Parents and guardians have the right to opt out of participation in ROAR and request that any existing data for their student be removed. These requests are made through each student's school. ROAR affirms adherence to the Parents' Bill of Rights for Data Privacy and Security and equivalent policies required by educational and governmental partners.
 
 ### Data Sharing
 
-ROAR only shares data with authorized individuals or entities, such as teachers or schools, and only when necessary to transmit score reports back to educational partners.
-
-> TODO:
-> Insert more specific language about how we share data, which data we share, and for what purpose.
+ROAR only shares data with authorized individuals or entities, such as teachers or schools, and only when necessary to transmit score reports back to educational partners. Partner confidential information will not be disclosed to third parties without explicit written authorization.
 
 ### Data Retention and Destruction
 
@@ -78,7 +70,7 @@ ROAR retains and destroys data in compliance with applicable privacy regulations
 - Partnership Data:
   - Purpose: partnership data is collected and maintained to fulfill ROAR's obligations to educational partners, such as providing score reports, progress updates, and other services required by partner schools and districts.
   - Composition: this data comprises all assessment and personal data for participants that have opted out of ROAR research.
-  - Retention: this data is retained only as long as necessary to meet contractual and reporting obligations to our educational partners. This may include providing student score reports, assessment data, and other partner-requested services.
+  - Retention: this data is retained only as long as necessary to meet contractual and reporting obligations to our educational partners. That is, it is retained for the duration of the partner agreement, as explicitly stated in the partner's requirements, or until receipt of written direction from the partner. This may include providing student score reports, assessment data, and other partner-requested services.
   - Destruction: Once partnership data is no longer required to meet the contractual or operational obligations to educational partners, it will be securely deleted within one year. This applies to both data stored in production systems and backup environments.
 
 #### Defining the end of the ROAR Project
@@ -87,14 +79,14 @@ The end of the ROAR project for the purposes of Research Data retention will be 
 
 #### Data Destruction Methods
 
-ROAR will employ secure data destruction methods that ensure the complete and irretrievable deletion of personal and research data, in compliance with industry standards and applicable data protection regulations. These methods may include:
+ROAR will employ secure data destruction methods that ensure the complete and irretrievable deletion of personal and research data, in compliance with NIST 800-88 standards for data sanitization and applicable data protection regulations. These methods may include:
 
 - Cryptographic erasure for encrypted data.
 - Secure overwriting or wiping for data on physical storage devices.
 - Deletion of cloud-stored data through provider-managed processes to ensure it is permanently removed from all systems.
 - Shredding of paper records.
 
-Following data destruction, a final audit will be conducted to confirm that all required data has been securely deleted and that no residual data remains in any systems, backups, or storage devices.
+Following data destruction, the ROAR information security officer will conduct a final audit to confirm that all required data has been securely deleted and that no residual data remains in any systems, backups, or storage devices.
 
 ---
 
@@ -120,19 +112,15 @@ These security measures are designed to protect both ROAR's internal systems and
 
 ### Roles and Responsibilities
 
-- **Information Security Officer**:
-  - Oversee the security program
-  - Conduct risk assessments
-  - Ensure compliance with this manual
-  - Ensure that third-party vendors comply with ROAR's security requirements and maintain necessary industry certifications.
 - **Employees**:
-  - Follow security best practices
-  - Review this manual quarterly
-  - Complete required security training
+  - Follow security best practices.
+  - Review this manual quarterly.
+  - Complete required security training.
   - Enroll all personal and Stanford-owned devices used for work with [Stanford Device Registration][link_stanford_device_registration]. Enroll each device for use with high risk data. Ensure that this registration includes
     - enrollment in either [BigFix][link_bigfix] or [Jamf][link_jamf],
     - whole disk encryption using the operating system's native encryption facilities, and
     - malware scanning using Crowdstrike Endpoint Antivirus or a similar [Stanford approved and managed anti-malware solution][link_stanford_anti_malware].
+  - Back up your data. Employees appointed through the Graduate School of Education (GSE) can obtain [CrashPlan through the GSE][link_crashplan_gse]. Employees appointed through the School of Medicine (SoM) can obtain [CrashPlan through the SoM][link_crashplan_som].
   - Enable multi-factor authentication on all GitHub accounts used for ROAR development.
   - For the following following third-party vendors, enable multi-factor authentication and always use a Stanford email for authentication:
     - Google, GCP, and Firebase
@@ -143,15 +131,22 @@ These security measures are designed to protect both ROAR's internal systems and
     - ClassLink
     - Redivis / Stanford Data Farm
   - Use only your `@stanford.edu` email address to conduct ROAR business.
-- **Developers, QA Team, and ROAR's Director of Technology and Innovation** (in addition to the employee responsibilities above)
+- **Developers, QA Team, and ROAR's Director of Technology and Innovation**
+  - All employee responsibilities described above
   - Complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa]
   - Adhere to and enforce the [ROAR software development lifecycle][link_roar_sdlc].
+- **Information Security Officer**:
+  - All employee responsibilities described above
+  - Oversee the security program
+  - Conduct risk assessments
+  - Ensure compliance with this manual
+  - Ensure that third-party vendors comply with ROAR's security requirements and maintain necessary industry certifications.
 
 ### Access Control
 
 #### Role-Based Access Control (RBAC)
 
-To protect sensitive data, access to ROAR systems is controlled based on user roles and responsibilities. The ROAR team defines the following roles:
+To protect sensitive data, access to ROAR systems is controlled based on user roles and responsibilities, consistent with the principle of least privilege. The ROAR team defines the following roles:
 
 - **Super Administrators**: Full access to all data and systems. This is restricted to ROAR employees with a need for full access.
 - **District Administrators**: Access to student data for a single district only.
@@ -161,7 +156,7 @@ To protect sensitive data, access to ROAR systems is controlled based on user ro
 - **Caregivers**: Access to only their students' data for the purpose of viewing assessment scores.
 - **Participants**: Access to only their own data for the purpose of completing assessments.
 
-Access to data on Firestore is governed by Firestore security rules, which ensure that data is only accessible to authorized users. There are separate security rules for the [admin database][link_security_rules_admin] and the [assessment database][link_security_rules_assessment].
+Access to data on Firestore is governed by Firestore security rules, which ensure that data is only accessible to authorized users. There are separate security rules for the [admin database][link_security_rules_admin] and the [assessment database][link_security_rules_assessment]. All access rights are adjusted or removed immediately upon role changes or termination.
   
 #### Authentication
 
@@ -171,7 +166,7 @@ The only password requirement for participants, caregivers, educators, and schoo
 
 ROAR users can also authenticate using the Clever or ClassLink SSO providers. For these, ROAR uses the modern and secure OpenID Connect (OIDC) protocol, which is built on top of OAuth 2.0. OIDC is widely adopted for web and mobile applications and is considered a secure and streamlined protocol for identity management.
 
-All ROAR employees have `@stanford.edu` email accounts and use only those accounts to conduct business. In accordance with minsec, all ROAR employees must use **Stanford Duo Mobile** for multi-factor authentication when accessing privileged accounts.
+All privileged access to ROAR systems is granted only to ROAR employees under their `@stanford.edu` email accounts. They use only those accounts to conduct business. In accordance with minsec, all ROAR employees must use **Stanford Duo Mobile** for multi-factor authentication when accessing privileged accounts.
 
 #### Onboarding and Offboarding
 
@@ -179,10 +174,10 @@ User accounts are created for new employees based on their roles. Access is remo
 
 ### Data Storage and Encryption
 
-ROAR enforces strict encryption policies to protect sensitive data. All data in transit, either between the ROAR application and users, or between different ROAR storage systems, is encrypted using **TLS/HTTPS**.
+ROAR enforces strict encryption policies to protect sensitive data. All data in transit, either between the ROAR application and users, or between different ROAR storage systems, is encrypted using **TLS/HTTPS** 1.2 or higher.
 When data is transmitted internally between ROAR employees, it is transmitted using secure mail or the Stanford managed, non-consumer Google Drive (described below), which is approved for high-risk data.
 
-Data at rest is stored in multiple possible locations. Below, we describe each location along with it's associated encryption policy and key management policy:
+Data at rest is stored in multiple possible locations and encrypted using NIST-compliant algorithms (e.g., AES-256). Below, we describe each location along with it's associated encryption policy and key management policy:
 
 - **Firebase Firestore** and other **Google Cloud Platform (GCP)** services
   - Encryption: This data is encrypted using the **AES-256** encryption standard.
@@ -191,8 +186,8 @@ Data at rest is stored in multiple possible locations. Below, we describe each l
   - Description: Data shared between districts and ROAR researchers, especially via CSV file uploads, is often stored in secure, shared Google Drive folders. This data is manually imported by authorized staff into the ROAR platform when necessary, using encrypted communication channels.
   - Encryption: This data is encrypted using the **AES-256** encryption standard.
   - Key management: The encryption keys themselves are encrypted and rotated regularly to ensure security. The management of encryption keys is handled by Google Cloud's internal processes, which follow strict security protocols.
-- Employee-owned or Stanford-owned **encrypted devices**:
-  - Description: ROAR employees may perform manual file handling with data that is downloaded to and processed on Stanford-managed encrypted devices. Whether this device is employee-owned or Stanford-owned, it's security is managed by Stanford through [Stanford Device Registration][link_stanford_device_registration]. These devices are required to be registered with Stanford University and approved for use with high-risk data.
+- Stanford-managed **encrypted devices**:
+  - Description: ROAR employees may perform manual file handling with data that is downloaded to and processed on Stanford-managed encrypted devices. Whether this device is employee-owned or Stanford-owned, it's security is managed by Stanford through [Stanford Device Registration][link_stanford_device_registration]. These devices are required to be registered with Stanford University and approved for use with high-risk data. ROAR partner data will not be processed or stored with personal accounts.
   - Encryption: Device registration includes enrollment in [Jamf][link_jamf] and [BigFix][link_bigfix] and whole disk encryption using the operating system's native encryption facilities.
   - Key management: The use of Jamf and BigFix ensure that operating system patches and updates are deployed in a timely manner and that encryption is verified in an ongoing way that can be centrally audited. The encryption keys themselves are managed by each individual employee.
 - Stanford Data Farm (Redivis)
@@ -340,16 +335,23 @@ The ROAR codebase, including all application components and infrastructure-as-co
 - GitHub Version Control: All code changes are tracked using GitHub's version control system, ensuring that code can be restored to any previous state. Each commit serves as a snapshot, and branches are protected to ensure only authorized changes are merged into production.
 - Disaster Recovery: In the event of code corruption or accidental deletion, ROAR's GitHub repositories allow for quick restoration by reverting to a previous commit or tag. The decentralized nature of GitHub ensures that the codebase is backed up across multiple locations and systems. This restoration process follows the same security controls described in [ROAR's SDLC](#software-development-lifecycle-security-controls).
 
+#### Employee device backup and restoration
+
+ROAR employees are required to backup their stanford-managed devices. Stanford provides a centrally managed, automatic data backup solution through [CrashPlan][link_crashplan].
+
 ### Business Continuity and Disaster Recovery
 
 ROAR maintains a disaster recovery plan to ensure the availability of services in case of system outages or disasters. Further details are in the [ROAR Business Continuity and Disaster Recovery Plan][link_roar_bcdr].
 
 [link_bigfix]: https://uit.stanford.edu/service/bigfix
+[link_crashplan]: https://uit.stanford.edu/service/crashplan
+[link_crashplan_gse]: https://gse-it.stanford.edu/crashplan
+[link_crashplan_som]: https://med.stanford.edu/irt/security/alldevices/backups.html
 [link_firebase_data_processing_terms]: https://firebase.google.com/terms/data-processing-terms#appendix-2:-security-measures
 [link_firestore_release_notes]: https://cloud.google.com/firestore/docs/release-notes
 [link_firestore_restoration]: https://firebase.google.com/docs/firestore/backups#restore_data_from_a_database_backup
 [link_jamf]: https://uit.stanford.edu/service/StanfordJamf
-[link_offboarding_checklist]: https://github.com/yeatmanlab/roar-infosec/blob/main/employee-lifecycle/onboarding-checklist.md
+[link_offboarding_checklist]: https://github.com/yeatmanlab/roar-infosec/blob/main/employee-lifecycle/offboarding-checklist.md
 [link_onboarding_checklist]: https://github.com/yeatmanlab/roar-infosec/blob/main/employee-lifecycle/onboarding-checklist.md
 [link_owasp_top10]: https://owasp.org/www-project-top-ten/
 [link_roar_bcdr]: https://github.com/yeatmanlab/roar-infosec/blob/main/roar-bcdr.pdf
