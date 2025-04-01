@@ -1,6 +1,9 @@
 # Makefile for generating PDF from Markdown
 
 # Variables
+ACCESSIBILITY_MD = roar-accessibility-statement.md
+ACCESSIBILITY_PDF = $(patsubst %.md, %.pdf, $(ACCESSIBILITY_MD))
+
 INFOSEC_MD = roar-data-privacy-and-infosec-manual.md
 INFOSEC_PDF = $(patsubst %.md, %.pdf, $(INFOSEC_MD))
 
@@ -14,11 +17,14 @@ MD_FILES = $(wildcard vendor-assessments/*.md)
 VENDOR_ASSESSMENTS_DIR = vendor-assessments
 
 # Default target
-all: infosec sldc bcdr
+all: accessibility infosec sldc bcdr
 
 PANDOC_OPTS = -f gfm --template ./.tex-template/eisvogel.latex \
               -V linkcolor=blue \
 			  -V header-includes:'\usepackage[export]{adjustbox} \let\includegraphicsbak\includegraphics \renewcommand*{\includegraphics}[2][]{\includegraphicsbak[frame,\#1]{\#2}}'
+
+accessibility: $(ACCESSIBILITY_MD)
+	@pandoc $(ACCESSIBILITY_MD) $(PANDOC_OPTS) -o $(ACCESSIBILITY_PDF)
 
 infosec: $(INFOSEC_MD)
 	@pandoc $(INFOSEC_MD) $(PANDOC_OPTS) -o $(INFOSEC_PDF)
@@ -51,6 +57,7 @@ clean:
 	rm -f $(INFOSEC_PDF)
 	rm -f $(SDLC_PDF)
 	rm -f $(BCDR_PDF)
+	rm -f $(ACCESSIBILITY_PDF)
 
 # Phony targets
-.PHONY: all clean install vendor-assessments bcdr sdlc infosec check-spelling
+.PHONY: all clean install vendor-assessments bcdr sdlc infosec accessibility check-spelling
