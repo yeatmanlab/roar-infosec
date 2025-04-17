@@ -105,7 +105,7 @@ The section includes details on
 - [**Penetration Testing**](#penetration-testing)
 - [**Security certification of third-party vendors**](#security-certifications-and-third-party-vendor-assessments)
 - [**Employee Training**](#employee-training)
-- [**Data Flow Diagrams**](#data-flow-diagrams)
+- [**Physical Security Controls**](#physical-security-controls)
 - [**Software Development Lifecycle Security Controls**](#software-development-lifecycle-security-controls)
 
 These security measures are designed to protect both ROAR's internal systems and user data from threats and vulnerabilities. The ultimate goal is to ensure that ROAR's information assets remain secure and resilient against both internal and external risks.
@@ -301,6 +301,34 @@ The **Information Security Officer is responsible** for ensuring that all ROAR t
 
 ROAR requires all employees and contractors to complete regular training on data privacy and information security best practices.
 All ROAR employees that access participant data must complete the "CITI Biomedical Responsible Conduct of Research" training and training on the Health Insurance Portability and Accountability Act (HIPAA) to protect PII. Additionally, all ROAR developers complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa], covering the importance of PII protection, the specifics of our data privacy policies, and their roles in maintaining these standards.
+
+### Physical Security Controls
+
+ROAR does not operate its own physical servers or data centers. Instead, all infrastructure is hosted on Google Cloud Platform (GCP) and Firebase, which are part of Google's secure, globally distributed infrastructure. As such, ROAR inherits robust physical security controls from Google, and enforces device-level and endpoint security through Stanford University's IT governance policies.
+
+1. Cloud Infrastructure Security (Google Cloud Platform)
+
+All ROAR data is stored and processed in GCP's nam5 multi-region, which consists exclusively of U.S.-based data centers. GCP's physical infrastructure security is regularly audited and certified under SOC 2 Type II, ISO 27001, and FedRAMP Moderate. GCP data centers employ industry-leading physical protections, including:
+
+- 24/7 on-site security staff
+- Biometric scanners, key card access, and multi-layered authentication systems
+- Man-trap entry points to control physical access
+- Video surveillance and centralized access logging
+- Redundant power, cooling, and fire suppression systems
+
+More information is available through the Google Cloud Security and Compliance documentation.
+
+1. ROAR Workstation Security
+
+ROAR team members access systems from remote locations using institutionally managed or compliant personal devices. These devices are governed by Stanford University's Minimum Security Standards (MinSec), which ensure:
+
+- Full disk encryption on all endpoints
+- Multi-factor authentication (2FA) for all administrative systems
+- Timeout and auto-lock policies to prevent unauthorized physical access
+- Device management and remote wipe capabilities for Stanford-issued devices
+- Security awareness training for all ROAR staff with access to institutional data
+
+These controls ensure that even in a distributed work environment, ROAR maintains a high level of physical security for all systems accessing sensitive institutional data.
 
 ### Software Development Lifecycle Security Controls
 

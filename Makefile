@@ -17,7 +17,7 @@ MD_FILES = $(wildcard vendor-assessments/*.md)
 VENDOR_ASSESSMENTS_DIR = vendor-assessments
 
 # Default target
-all: accessibility infosec sldc bcdr
+all: accessibility infosec sdlc bcdr
 
 PANDOC_OPTS = -f gfm --template ./.tex-template/eisvogel.latex \
               -V linkcolor=blue \
