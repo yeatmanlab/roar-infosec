@@ -14,6 +14,8 @@ titlepage-text-color: "FFFFFF"
 
 This Data Privacy and Information Security Manual provides an overview of the policies and practices implemented by the ROAR team to ensure the security and privacy of data. The goal of this manual is to safeguard sensitive information, maintain regulatory compliance, and protect the confidentiality, integrity, and availability of data used in the ROAR application.
 
+ROAR's information security policies align with the NIST Cybersecurity Framework (CSF) 2.0. For a detailed mapping of ROAR's policies to the NIST CSF, see Appendix A.
+
 ### Scope
 
 This manual applies to all ROAR employees, contractors, and third-party vendors who interact with the ROAR platform. It covers the collection, processing, storage, transmission, and destruction of data through the ROAR platform, including but not limited to data from students, teachers, caregivers, research participants, and partner administrators.
@@ -48,7 +50,7 @@ ROAR maintains detailed data flow diagrams (DFDs) that describe how data moves t
 
 ### User Rights
 
-Parents and guardians have the right to opt out of participation in ROAR and request that any existing data for their student be removed. These requests are made through each student's school. ROAR affirms adherence to the Parents' Bill of Rights for Data Privacy and Security and equivalent policies required by educational and governmental partners.
+Parents and guardians have the right to opt out of participation in ROAR and request that any existing data for their student be removed. These requests are made through each student's school. ROAR affirms adherence to the New York City Board of Education Parents' Bill of Rights for Data Privacy and Security and equivalent policies required by educational and governmental partners.
 
 ### Data Sharing
 
@@ -69,9 +71,9 @@ ROAR retains and destroys data in compliance with applicable privacy regulations
 
 - Partnership Data:
   - Purpose: partnership data is collected and maintained to fulfill ROAR's obligations to educational partners, such as providing score reports, progress updates, and other services required by partner schools and districts.
-  - Composition: this data comprises all assessment and personal data for participants that have opted out of ROAR research.
+  - Composition: this data comprises all assessment and personal data needed to fulfill obligations to partners.
   - Retention: this data is retained only as long as necessary to meet contractual and reporting obligations to our educational partners. That is, it is retained for the duration of the partner agreement, as explicitly stated in the partner's requirements, or until receipt of written direction from the partner. This may include providing student score reports, assessment data, and other partner-requested services.
-  - Destruction: Once partnership data is no longer required to meet the contractual or operational obligations to educational partners, it will be securely deleted within one year. This applies to both data stored in production systems and backup environments.
+  - Destruction: Once partnership data is no longer required to meet the contractual or operational obligations to educational partners, it will be securely deleted within 30 days. This applies to both data stored in production systems and backup environments.
 
 #### Defining the end of the ROAR Project
 
@@ -100,10 +102,14 @@ The section includes details on
 - [**Access Control**](#access-control)
 - [**Data Storage and Encryption**](#data-storage-and-encryption)
 - [**Audit logging and monitoring**](#audit-logging-and-monitoring)
+- [**Security Continuous Monitoring**](#security-continuous-monitoring)
 - [**Incident Response**](#incident-response)
+- [**Testing and Review of Incident Response and Recovery Plans**](#testing-and-review-of-incident-response-and-recovery-plans)
+- [**Recovery Communications Plan**](#recovery-communications-plan)
 - [**Vulnerability Scanning**](#vulnerability-scanning)
 - [**Penetration Testing**](#penetration-testing)
-- [**Security certification of third-party vendors**](#security-certifications-and-third-party-vendor-assessments)
+- [**Security certifications**](#security-certifications)
+- [**Supply Chain and Vendor Risk Management**](#supply-chain-and-vendor-risk-management)
 - [**Employee Training**](#employee-training)
 - [**Physical Security Controls**](#physical-security-controls)
 - [**Software Development Lifecycle Security Controls**](#software-development-lifecycle-security-controls)
@@ -137,6 +143,7 @@ These security measures are designed to protect both ROAR's internal systems and
   - Adhere to and enforce the [ROAR software development lifecycle][link_roar_sdlc].
 - **Information Security Officer**:
   - All employee responsibilities described above
+  - Ensure that all employees and contractors complete required information security training and store completion certificates for each employee.
   - Oversee the security program
   - Conduct risk assessments
   - Ensure compliance with this manual
@@ -199,6 +206,18 @@ User activities within the ROAR system are logged to ensure transparency and tra
 **Login events**, **data access**, and **data modifications** are logged in Firebase audit logs.
 IP addresses and device information may be logged for security purposes. Firebase audit logs are retained for 400 days. These logs are monitored as described in the [incident response plan section](#incident-response).
 
+### Security Continuous Monitoring
+
+ROAR employs continuous monitoring to detect security events and anomalous activity:
+
+- **Firebase Audit Logs**: All access and actions are logged and reviewed regularly.
+- **Google Cloud Monitoring**: Automated tools monitor infrastructure for suspicious activity, unauthorized access, and system health.
+- **Dependabot & CodeQL**: Automated dependency and code security scanning for vulnerabilities.
+- **Qualys Web Application Scanning**: Regular scans for web application vulnerabilities.
+- **Log Review**: Logs are reviewed at least monthly and after any security incident.
+
+These monitoring activities ensure timely detection and response to threats.
+
 ### Incident Response
 
 In the event of a data breach or security incident, ROAR follows a detailed incident response process to contain the breach, mitigate damage, and notify affected parties. As ROAR relies on Google Cloud Platform (GCP) and Firebase for its infrastructure, the breach response procedures are aligned with Google's established protocols for handling security incidents. Additionally, ROAR follows Stanford's minimum security (minsec) requirements, which further specify steps for breach management. Here's an overview of the procedures and response timings:
@@ -223,6 +242,19 @@ In the event of a data breach or security incident, ROAR follows a detailed inci
 1. Post-Incident Review and Reporting
    - Post-Mortem Analysis: After the issue is fully resolved, ROAR, in concert with Stanford's Information Security Incident Response Team and Google Cloud, perform a post-mortem analysis to identify lessons learned and implement additional security measures where needed. This analysis is shared with relevant parties if necessary.
    - Reporting: ROAR provides a detailed report to stakeholders (e.g., school districts) on the nature of the breach, the steps taken to mitigate it, and the corrective actions to prevent future incidents.
+
+### Testing and Review of Incident Response and Recovery Plans
+
+ROAR's incident response and disaster recovery plans are tested and reviewed at least annually. Testing may include tabletop exercises, simulated incidents, and recovery drills. After each test or real incident, a post-mortem review is conducted to identify lessons learned and update plans as needed. Updates and improvements are tracked to completion.
+
+### Recovery Communications Plan
+
+In the event of a major incident or disaster recovery event, ROAR will:
+
+- Designate a communications lead (typically the Information Security Officer or Director of Technology and Innovation).
+- Provide timely updates to affected stakeholders (e.g., partner districts, school administrators, users) about the status of recovery efforts, expected timelines, and any actions required of them.
+- Issue a final summary report after recovery is complete, detailing the incident, recovery actions, and steps taken to prevent recurrence.
+- Maintain records of all communications for audit and compliance purposes.
 
 ### Vulnerability Scanning
 
@@ -275,7 +307,7 @@ The third-party penetration testers will provide a detailed report on the findin
 ROAR will prioritize remediation of identified vulnerabilities based on severity, with high and critical issues addressed immediately.
 A post-test review will be conducted to verify that all issues have been adequately resolved before any affected systems are brought back online.
 
-### Security Certifications and third-party vendor assessments
+### Security Certifications
 
 ROAR operates on Google Cloud Platform (GCP) and Firebase, which are certified under various security standards including FedRAMP Moderate, SOC 2 Type II, and ISO/IEC 27001. These platforms provide the secure infrastructure that underpins ROAR's operations, ensuring that data is stored and processed in a compliant, secure environment. We provide details below on GCP and Firebase compliance with those standards.
 
@@ -295,12 +327,39 @@ ROAR operates on Google Cloud Platform (GCP) and Firebase, which are certified u
 
 However, it is important to note that ROAR itself does not hold these security certifications independently. Instead, ROAR aligns its security practices with Stanford minsec. These minsec requirements ensure that ROAR adheres to best practices in data security, including encryption, access control, and regular audits, while relying on GCP and Firebase to meet industry standards for infrastructure security.
 
+### Supply Chain and Vendor Risk Management
+
+ROAR evaluates and manages risks from third-party vendors and service providers as follows:
+
+- Maintain a list of all vendors with access to ROAR data or systems.
+- Require vendors to provide evidence of relevant security certifications (e.g., SOC 2 Type II, ISO 27001, FedRAMP).
+- Conduct vendor risk assessments at onboarding and at least annually thereafter.
+- Review vendor security practices, incident history, and compliance with contractual requirements.
+- Require vendors to notify ROAR of any security incidents that may impact ROAR data or services.
+- Terminate vendor access promptly upon contract expiration or termination.
+
 The **Information Security Officer is responsible** for ensuring that all ROAR third-party vendors, such as Google Cloud Platform, Clever, and ClassLink, maintain **SOC 2 Type II** or **ISO 27001** certifications. For each vendor, the Information Security Officer shall generate a third-party vendor assessment report that assesses the security practices of the vendor and verifies compliance with the above privacy and security standards. The Information Security Officer shall review these vendor assessments quarterly.
 
 ### Employee Training
 
 ROAR requires all employees and contractors to complete regular training on data privacy and information security best practices.
-All ROAR employees that access participant data must complete the "CITI Biomedical Responsible Conduct of Research" training and training on the Health Insurance Portability and Accountability Act (HIPAA) to protect PII. Additionally, all ROAR developers complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa], covering the importance of PII protection, the specifics of our data privacy policies, and their roles in maintaining these standards.
+All ROAR employees that access participant data must complete the following required training:
+
+- **CITI Biomedical Responsible Conduct of Research**: Ethical research practices and data handling
+- **HIPAA Training**: Protecting Personal Health Information and PII
+- **FERPA Training**: Understanding the Family Educational Rights and Privacy Act requirements for handling student education records
+
+Additionally, all ROAR developers complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa], covering the importance of PII protection, the specifics of our data privacy policies, and their roles in maintaining these standards.
+
+Due to ROAR's work with educational institutions, special emphasis is placed on FERPA compliance training, which covers:
+
+- Proper handling of student education records
+- Parental rights to inspect and review education records
+- Requirements for consent before disclosing personally identifiable information
+- Exceptions to consent requirements
+- Proper response to data breaches involving education records
+
+The Information Security Officer shall ensure that all employees and contractors complete these training requirements and store completion certificates for each employee. Training must be renewed annually, and special training sessions are conducted whenever significant updates to FERPA regulations occur.
 
 ### Physical Security Controls
 
@@ -370,6 +429,62 @@ ROAR employees are required to backup their stanford-managed devices. Stanford p
 ### Business Continuity and Disaster Recovery
 
 ROAR maintains a disaster recovery plan to ensure the availability of services in case of system outages or disasters. Further details are in the [ROAR Business Continuity and Disaster Recovery Plan][link_roar_bcdr].
+
+<div style="page-break-after: always;"></div>
+
+## Appendix A: NIST Cybersecurity Framework 2.0 Compliance Matrix
+
+The following matrix maps the policies and controls described in this manual to the NIST Cybersecurity Framework (CSF) 2.0, showing which sections address each category.
+
+<div style="font-size: 85%;">
+
+| Function | Category | Reference in Manual |
+|:---------|:---------|:--------------------|
+| **GOVERN** | Organizational Context (GV.OC) | Introduction |
+| | | Scope |
+| | | Data Privacy |
+| | Risk Management (GV.RM) | Vendor Risk Management |
+| | | Incident Response |
+| | Roles & Responsibilities (GV.RR) | Roles & Responsibilities section |
+| | Policy (GV.PO) | Information Security policies |
+| | | Quarterly review requirements |
+| | Oversight (GV.OV) | InfoSec Officer responsibilities |
+| | | Review processes |
+| | Supply Chain Risk (GV.SC) | Vendor Risk Management section |
+| **IDENTIFY** | Asset Management (ID.AM) | Device Registration |
+| | | Asset Inventory |
+| | Risk Assessment (ID.RA) | InfoSec Officer risk assessments |
+| | | Vendor Risk Assessment |
+| | Improvement (ID.IM) | Software Development Lifecycle |
+| | | Post-Incident Review processes |
+| **PROTECT** | Authentication & Access (PR.AA) | Role-Based Access Control |
+| | | Authentication section |
+| | Training (PR.AT) | Employee Training section |
+| | | CITI Training |
+| | | HIPAA Training |
+| | Data Security (PR.DS) | Data Storage and Encryption |
+| | | Data Retention and Destruction |
+| | Platform Security (PR.PS) | GCP security |
+| | | Firebase security |
+| | | SDLC controls |
+| | Infrastructure (PR.IR) | GCP infrastructure |
+| | | Redundancy and backup systems |
+| **DETECT** | Monitoring (DE.CM) | Firebase Audit Logs |
+| | | Google Cloud Monitoring |
+| | Event Analysis (DE.AE) | Audit Logging and Monitoring |
+| | | Incident Response procedures |
+| **RESPOND** | Incident Management (RS.MA) | Incident Response section |
+| | | Detection and Reporting |
+| | Incident Analysis (RS.AN) | Root Cause Analysis section |
+| | Communication (RS.CO) | Initial Notification and Response |
+| | | Recovery Communications Plan |
+| | Mitigation (RS.MI) | Containment Measures |
+| | | Remediation steps |
+| **RECOVER** | Recovery Execution (RC.RP) | Remediation and Recovery |
+| | | Backup and Recovery sections |
+| | Communication (RC.CO) | Recovery Communications Plan |
+
+</div>
 
 [link_bigfix]: https://uit.stanford.edu/service/bigfix
 [link_crashplan]: https://uit.stanford.edu/service/crashplan
