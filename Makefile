@@ -7,6 +7,9 @@ ACCESSIBILITY_PDF = $(patsubst %.md, %.pdf, $(ACCESSIBILITY_MD))
 INFOSEC_MD = roar-data-privacy-and-infosec-manual.md
 INFOSEC_PDF = $(patsubst %.md, %.pdf, $(INFOSEC_MD))
 
+NYCPS_INFOSEC_MD = nycps/roar-nycps-data-privacy-and-infosec-manual.md
+NYCPS_INFOSEC_PDF = $(patsubst %.md, %.pdf, $(NYCPS_INFOSEC_MD))
+
 SDLC_MD = roar-sdlc.md
 SDLC_PDF = $(patsubst %.md, %.pdf, $(SDLC_MD))
 
@@ -17,7 +20,7 @@ MD_FILES = $(wildcard vendor-assessments/*.md)
 VENDOR_ASSESSMENTS_DIR = vendor-assessments
 
 # Default target
-all: accessibility infosec sdlc bcdr
+all: accessibility infosec nycps sdlc bcdr
 
 PANDOC_OPTS = -f gfm --template ./.tex-template/eisvogel.latex \
               -V linkcolor=blue \
@@ -29,13 +32,27 @@ accessibility: $(ACCESSIBILITY_MD)
 infosec: $(INFOSEC_MD)
 	@pandoc $(INFOSEC_MD) $(PANDOC_OPTS) -o $(INFOSEC_PDF)
 
+nycps: $(NYCPS_INFOSEC_MD)
+	@pandoc $(NYCPS_INFOSEC_MD) $(PANDOC_OPTS) -o $(NYCPS_INFOSEC_PDF)
+	@if command -v pdftk >/dev/null 2>&1; then \
+		echo "Merging NYCPS infosec manual with appendices..."; \
+		echo "Creating temporary file list..."; \
+		echo $(NYCPS_INFOSEC_PDF) > tmp_pdf_list.txt; \
+		for file in $$(ls nycps/appendix_*.pdf | sort); do \
+			echo $$file >> tmp_pdf_list.txt; \
+		done; \
+		pdftk $$(cat tmp_pdf_list.txt) cat output nycps/roar-nycps-data-privacy-and-infosec-manual-with-appendices.pdf; \
+		rm tmp_pdf_list.txt; \
+	else \
+		echo "pdftk not found. Please install it to merge PDF files:"; \
+	fi
+
 sdlc: $(SDLC_MD)
 	@pandoc $(SDLC_MD) $(PANDOC_OPTS) -o $(SDLC_PDF)
 
 bcdr: $(BCDR_MD)
 	@pandoc $(BCDR_MD) $(PANDOC_OPTS) -o $(BCDR_PDF)
 
-# Command to generate PDFs for all markdown files in the vendor-assessments folder
 vendor-assessments: $(MD_FILES)
 	@mkdir -p $(VENDOR_ASSESSMENTS_DIR)
 	@for file in $(MD_FILES); do \
@@ -58,6 +75,7 @@ clean:
 	rm -f $(SDLC_PDF)
 	rm -f $(BCDR_PDF)
 	rm -f $(ACCESSIBILITY_PDF)
+	rm -f $(NYCPS_INFOSEC_PDF)
 
 # Phony targets
-.PHONY: all clean install vendor-assessments bcdr sdlc infosec accessibility check-spelling
+.PHONY: all clean install vendor-assessments bcdr sdlc infosec accessibility nycps check-spelling
