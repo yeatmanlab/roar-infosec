@@ -33,7 +33,7 @@ This section covers how data is collected, how it is used for operational and re
 The data that ROAR collects from users can be broadly separated into two categories:
 
 - **Personal Data**:
-  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores. For research purposes, ROAR also stores demographic information, such as a student's IEP status, free and reduced lunch status, and home language. When this information is used in research, it is always de-identified before publication.
+  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores. For research purposes, ROAR also stores demographic information, such as a student's IEP status and home language. When this information is used in research, it is always de-identified before publication.
 
   While the ROAR application does not directly store student IP addresses, these may be logged in Firebase audit logs for security purposes. These logs could be accessed during a security incident or breach investigation to aid in tracing unauthorized access or suspicious activity.
 
@@ -54,7 +54,7 @@ Parents and guardians have the right to opt out of participation in ROAR and req
 
 ### Data Sharing
 
-ROAR only shares data with authorized individuals or entities, such as teachers or schools, and only when necessary to transmit score reports back to educational partners. Partner confidential information will not be disclosed to third parties without explicit written authorization.
+ROAR only shares data with authorized individuals or entities, such as teachers or schools, and only when necessary to transmit score reports back to educational partners. When partner confidential information is disclosed to ROAR's third-party vendors, such as Google Cloud Platform, ROAR will ensure that it has an agreement in place that is at least as stringent as ROAR's own data sharing agreements with the partner (see the [supply chain and vendor risk management](#supply-chain-and-vendor-risk-management) section).
 
 ### Data Retention and Destruction
 
@@ -88,7 +88,7 @@ ROAR will employ secure data destruction methods that ensure the complete and ir
 - Deletion of cloud-stored data through provider-managed processes to ensure it is permanently removed from all systems.
 - Shredding of paper records.
 
-Following data destruction, the ROAR information security officer will conduct a final audit to confirm that all required data has been securely deleted and that no residual data remains in any systems, backups, or storage devices.
+ROAR does not use de-identification methods in lieu of destruction. Following data destruction, the ROAR information security officer will conduct a final audit to confirm that all required data has been securely deleted and that no residual data remains in any systems, backups, or storage devices.
 
 ---
 
@@ -346,7 +346,7 @@ ROAR requires all employees and contractors to complete regular training on data
 All ROAR employees that access participant data must complete the following required training:
 
 - **CITI Biomedical Responsible Conduct of Research**: Ethical research practices and data handling
-- **HIPAA Training**: Protecting Personal Health Information and PII
+- **HIPAA Training**: Protecting Personal Health Information
 - **FERPA Training**: Understanding the Family Educational Rights and Privacy Act requirements for handling student education records
 
 Additionally, all ROAR developers complete annual information security training from the [Stanford Information Security Academy][link_stanford_sisa], covering the importance of PII protection, the specifics of our data privacy policies, and their roles in maintaining these standards.
@@ -359,7 +359,7 @@ Due to ROAR's work with educational institutions, special emphasis is placed on 
 - Exceptions to consent requirements
 - Proper response to data breaches involving education records
 
-The Information Security Officer shall ensure that all employees and contractors complete these training requirements and store completion certificates for each employee. Training must be renewed annually, and special training sessions are conducted whenever significant updates to FERPA regulations occur.
+The Information Security Officer shall ensure that all employees and contractors complete these training requirements and store completion certificates for each employee. Training must be renewed annually, and special training sessions are conducted whenever significant updates to laws and regulations occur.
 
 ### Physical Security Controls
 
