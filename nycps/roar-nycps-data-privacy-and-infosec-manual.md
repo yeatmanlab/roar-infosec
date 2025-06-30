@@ -33,7 +33,7 @@ This section covers how data is collected, how it is used for operational and re
 The data that ROAR collects from users can be broadly separated into two categories:
 
 - **Personal Data**:
-  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores. For research purposes, ROAR also stores demographic information, such as a student's IEP status and home language. When this information is used in research, it is always de-identified before publication.
+  ROAR receives student information such as student names for the purpose of sharing score reports with teachers. ROAR also collects grade level and date of birth (DOB) to generate standardized scores.
 
   While the ROAR application does not directly store student IP addresses, these may be logged in Firebase audit logs for security purposes. These logs could be accessed during a security incident or breach investigation to aid in tracing unauthorized access or suspicious activity.
 
